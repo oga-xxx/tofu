@@ -15,7 +15,7 @@
                     @if (App\Models\recipe::find($fav->favoriteable_id)->image !== "")
                     <img src="{{ asset(App\Models\recipe::find($fav->favoriteable_id)->image) }}" class="img-fluid w-100">
                     @else
-                    <img src="{{ asset('mg/no_image.png') }}" class="img-fluid w-100">
+                    <img src="{{ asset('img/no_image.png') }}" class="img-fluid w-100">
                     @endif
                     </a>
                     <div class="container mt-3">

@@ -23,18 +23,18 @@
     </div>
     <div>
         <strong>豆腐感:</strong>
-        <input type="number" name="score"  value="{{ $recipe->score }}">
+        <input type="number" name="score" value="{{ $recipe->score }}">
     </div>
     <div>
-    <strong>Category:</strong>
+        <strong>Category:</strong>
         <select name="category_id">
-        @foreach ($categories as $category)
+            @foreach ($categories as $category)
             @if ($category->id == $recipe->category_id)
-                <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+            <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
             @else
-                <option value="{{ $category->id }}">{{ $category->name }}</option>
+            <option value="{{ $category->id }}">{{ $category->name }}</option>
             @endif
-        @endforeach
+            @endforeach
         </select>
     </div>
     <div>
