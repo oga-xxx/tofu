@@ -19,13 +19,14 @@
       <a href="{{ route('posts.index') }}">&lt; 戻る</a>
     </div>
 
-    <form action="{{ route('posts.update', $post) }}" method="post">
+    <form action="{{ route('posts.update', $post) }}" method="post" enctype="multipart/form-data">
       @csrf
       @method('patch')
       <div class="form-group mb-3">
         <label for="title">タイトル</label>
         <input type="text" class="form-control" name="title" value="{{ old('title', $post->title) }}">
       </div>
+      <input type="file" name="image">
       <div class="form-group mb-3">
         <label for="content">本文</label>
         <textarea class="form-control" name="content">{{ old('content', $post->content) }}</textarea>

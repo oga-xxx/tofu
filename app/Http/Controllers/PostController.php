@@ -28,7 +28,23 @@ class PostController extends Controller
         $post->title = $request->input('title');
         $post->content = $request->input('content');
         $post->user_id = Auth::user()->id;
+        $post->image = $request->file('image');
         $post->save();
+
+        $img = $request->file('image');
+
+        // 画像情報がセットされていれば、保存処理を実行
+        if (isset($img)) {
+            // storage > public > img配下に画像が保存される
+            $path = $img->store('img','public');
+            // store処理が実行できたらDBに保存処理を実行
+            if ($path) {
+                // DBに登録する処理
+                Post::create([
+                    'image' => $path,
+                ]);
+            }
+        }
 
         return redirect()->route('posts.index')->with('flash_message', '投稿が完了しました。');
     }
