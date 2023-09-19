@@ -62,7 +62,7 @@
                     <div class="col-9 d-flex align-items-center ms-2 mt-3">
                         <div class="d-flex flex-column">
                             <label for="user-name">お気に入りレシピ</label>
-                            <p>お気に入りレシピ</p>
+                            <p>お気に入りレシピのリスト</p>
                         </div>
                     </div>
                 </div>
@@ -84,13 +84,13 @@
                     </div>
                     <div class="col-9 d-flex align-items-center ms-2 mt-3">
                         <div class="d-flex flex-column">
-                            <label for="user-name">投稿作成</label>
-                            <p>新規投稿を作成できます。</p>
+                            <label for="user-name">　マイポスト</label>
+                            <p>　投稿リスト</p>
                         </div>
                     </div>
                 </div>
                 <div class="d-flex align-items-center">
-                    <a href="{{ route('posts.create') }}">
+                    <a href="{{ route('mypage.my_post') }}">
                         <i class="fas fa-chevron-right fa-2x"></i>
                     </a>
                 </div>

@@ -12,7 +12,7 @@ class Post extends Model
     protected $table = 'posts';
 
     protected $fillable = [
-        'img',
+        'title', 'content', 'img',
     ];
 
     public function comments()

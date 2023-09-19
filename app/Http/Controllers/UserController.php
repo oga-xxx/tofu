@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Recipe;
 use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -96,6 +97,17 @@ class UserController extends Controller
         $favorites = $user->favorites(Category::class)->get();
 
         return view('users.favorite', compact('favorites', 'categories'));
+    }
+
+    public function my_post()
+    {
+        $posts = \Auth::user()->posts;
+
+        return view('users.my_post', [
+            'title' => '投稿一覧',
+            'posts' => $posts,
+        ]);
+
     }
 
 }

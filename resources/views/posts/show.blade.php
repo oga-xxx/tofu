@@ -13,7 +13,7 @@
       <p><small>{{$post->user->name}}</small></p>
       <p><small>{{$post->created_at}}</small></p>
       @if ($post->image !== "")
-      <img src="{{ Storage::url($post->image) }}" alt=“料理の画像” class="card-img-top">
+      <img src="{{ asset($post->image) }}" alt=“料理の画像” class="card-img-top">
       @else
       <img src="{{ asset('img/no_image.png')}}" alt=“料理の画像” class="card-img-top">
       @endif
