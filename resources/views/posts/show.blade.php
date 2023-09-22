@@ -13,14 +13,14 @@
       <p><small>{{$post->user->name}}</small></p>
       <p><small>{{$post->created_at}}</small></p>
       @if ($post->image !== "")
-      <img src="{{ asset($post->image) }}" alt=“料理の画像” class="card-img-top">
+      <img src="{{ Storage::url($post->img) }}" alt=“料理の画像” class="card-img-top">
       @else
       <img src="{{ asset('img/no_image.png')}}" alt=“料理の画像” class="card-img-top">
       @endif
       <div class="card-body">
         <h5 class="card-title">{{ $post->title }}</h5>
         <p class="card-text">{{ $post->content }}</p>
-        @auth
+        @if ($post->id == $post->user_id)
         <div class="d-flex">
           <a href="{{ route('posts.edit', $post) }}" class="btn btn-outline-primary d-block me-1">編集</a>
 
@@ -30,7 +30,7 @@
             <button type="submit" class="btn btn-outline-danger">削除</button>
           </form>
         </div>
-        @endauth
+        @endif
       </div>
     </div>
 

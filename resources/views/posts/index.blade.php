@@ -19,10 +19,16 @@
     <p><small>{{$post->user->name}}</small></p>
     <p><small>{{$post->created_at}}</small></p>
       @if ($post->image !== "")
-      <img src="{{ Storage::url($post->image) }}" alt=“料理の画像” class="card-img-top">
+      @php
+      var_dump($post->image);
+      var_dump("あああああああああああああ");
+      $image_path = "app/public/"  . $post->image;
+      @endphp
+      <img src="{{ Storage::url( "app/public/"  . $post->image) }}" alt=“料理の画像” class="card-img-top">
       @else
       <img src="{{ asset('img/no_image.png')}}" alt=“料理の画像” class="card-img-top">
       @endif
+
     <div class="card-body">
       <h5 class="card-title">{{ $post->title }}</h5>
       <p class="card-text">{!! nl2br(e(Str::limit($post->content, 30))) !!}</p>

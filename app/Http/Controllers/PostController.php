@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 
+
 class PostController extends Controller
 {
     public function index() {
@@ -19,6 +20,7 @@ class PostController extends Controller
     }
 
     public function store(Request $request) {
+
         $request->validate([
             'title' => 'required|max:20',
             'content' => 'required|max:140',
@@ -28,9 +30,6 @@ class PostController extends Controller
         $post->title = $request->input('title');
         $post->content = $request->input('content');
         $post->user_id = Auth::user()->id;
-        $post->image = $request->file('image');
-        $post->save();
-
         $img = $request->file('image');
 
         // 画像情報がセットされていれば、保存処理を実行
@@ -39,12 +38,10 @@ class PostController extends Controller
             $path = $img->store('img','public');
             // store処理が実行できたらDBに保存処理を実行
             if ($path) {
-                // DBに登録する処理
-                Post::create([
-                    'image' => $path,
-                ]);
+                $post->image = $path;
             }
         }
+        $post->save();
 
         return redirect()->route('posts.index')->with('flash_message', '投稿が完了しました。');
     }
@@ -77,4 +74,5 @@ class PostController extends Controller
 
         return redirect()->route('posts.index')->with('flach_message', '投稿を削除しました。');
     }
+
 }

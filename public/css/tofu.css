@@ -71,6 +71,16 @@ body {
   letter-spacing: 0.11px;
 }
 
+main {
+  background-color: #f2eddb;
+  background-image: url(../img/haikei.png);
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  margin-bottom: 30px;
+}
+
 caption {
   font-family: YuGo;
   font-size: 12px;
@@ -92,6 +102,27 @@ label {
   color: #191919; 
 }
 
-footer {
-  margin-top: 60px;
+.card {
+  margin-left: auto;
+  margin-right: auto;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: calc(100% - 20px *2) / 3;
+  height: auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,.2)
+}
+
+.card > :not(:nth-child(3n-2)) {
+  margin-left: 0px;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 14px rgba(50, 50, 93, .1), 0 3px 6px rgba(0, 0, 0, .08);
+  transition: all .5s;
 }

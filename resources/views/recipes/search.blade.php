@@ -44,10 +44,10 @@
                     <h3 class="brown p-2">レシピ一覧</h3>
                 </div>
 
-                <div class="container">
+                <div>
                     @if(!empty($data))
                     @foreach($data as $recipe)
-                    <div class="card" style="width: 18rem;">
+                    <div class="card"  style="width: 18rem;">
                         @if ($recipe->image !== "")
                         <img src="{{ asset($recipe->image) }}" alt="カードの画像" class="card-img-top">
                         @else

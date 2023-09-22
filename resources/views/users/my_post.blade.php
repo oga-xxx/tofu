@@ -9,8 +9,6 @@
 
         @foreach($posts as $post)
         <div class="card" style="width: 20rem;">
-            <p><small>{{$post->user->name}}</small></p>
-            <p><small>{{$post->created_at}}</small></p>
             @if ($post->image !== "")
             <img src="{{ Storage::url($post->image) }}" alt=“料理の画像” class="card-img-top">
             @else
