@@ -32,11 +32,8 @@ class PostController extends Controller
         $post->user_id = Auth::user()->id;
         $img = $request->file('image');
 
-        // 画像情報がセットされていれば、保存処理を実行
         if (isset($img)) {
-            // storage > public > img配下に画像が保存される
             $path = $img->store('img','public');
-            // store処理が実行できたらDBに保存処理を実行
             if ($path) {
                 $post->image = $path;
             }

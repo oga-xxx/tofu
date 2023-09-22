@@ -47,6 +47,7 @@ class RecipeController extends Controller
         $recipe = new Recipe();
         $recipe->name = $request->input('name');
         $recipe->image = $request->input('image');
+        $recipe->ingredients = $request->input('ingredients');
         $recipe->cooking = $request->input('cooking');
         $recipe->score = $request->input('score');
         $recipe->category_id = $request->input('category_id');
@@ -90,6 +91,7 @@ class RecipeController extends Controller
     {
         $recipe->name = $request->input('name');
         $recipe->image = $request->input('image');
+        $recipe->ingredients = $request->input('ingredients');
         $recipe->cooking = $request->input('cooking');
         $recipe->score = $request->input('score');
         $recipe->category_id = $request->input('category_id');

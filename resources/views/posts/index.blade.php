@@ -18,16 +18,11 @@
   <div class="card" style="width: 20rem;">
     <p><small>{{$post->user->name}}</small></p>
     <p><small>{{$post->created_at}}</small></p>
-      @if ($post->image !== "")
-      @php
-      var_dump($post->image);
-      var_dump("あああああああああああああ");
-      $image_path = "app/public/"  . $post->image;
-      @endphp
-      <img src="{{ Storage::url( "app/public/"  . $post->image) }}" alt=“料理の画像” class="card-img-top">
-      @else
-      <img src="{{ asset('img/no_image.png')}}" alt=“料理の画像” class="card-img-top">
-      @endif
+    @if ($post->image !== "")
+    <img src="{{ asset("storage/" . $post->image) }}" alt=“料理の画像” class="card-img-top">
+    @else
+    <img src="{{ asset('img/no_image.png')}}" alt=“料理の画像” class="card-img-top">
+    @endif
 
     <div class="card-body">
       <h5 class="card-title">{{ $post->title }}</h5>

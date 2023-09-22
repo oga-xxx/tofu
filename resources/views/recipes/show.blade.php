@@ -27,6 +27,8 @@
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title">{{$recipe->name}}</h5>
+        <p class="card-text">食材</p>
+        <p class="card-text">{{$recipe->ingredients}}</p>
         <p class="card-text">調理方法</p>
         <p class="card-text">{{$recipe->cooking}}</p>
       </div>

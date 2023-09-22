@@ -30,6 +30,7 @@ class RecipeController extends AdminController
         $grid->column('id', __('Id'))->sortable();
         $grid->column('name', __('Name'));
         $grid->column('image', __('Image'))->image();
+        $grid->column('ingredients', __('Ingredients'));
         $grid->column('cooking', __('Cooking'));
         $grid->column('score', __('Score'));
         $grid->column('category.name', __('Category Name'));
@@ -38,6 +39,7 @@ class RecipeController extends AdminController
 
         $grid->filter(function($filter) {
             $filter->like('name', 'レシピ名');
+            $filter->like('ingredients', '材料');
             $filter->like('cooking', '作り方');
             $filter->between('score', '豆腐感');
             $filter->in('category_id', '置き換え')->multipleSelect(Category::all()->pluck('name', 'id'));
@@ -59,6 +61,7 @@ class RecipeController extends AdminController
         $show->field('id', __('Id'));
         $show->field('name', __('Name'));
         $show->field('image', __('Image'))->image();
+        $show->field('ingredients', __('Ingredients'));
         $show->field('cooking', __('Cooking'));
         $show->field('score', __('Score'));
         $show->field('category.name', __('Category Name'));
@@ -79,6 +82,7 @@ class RecipeController extends AdminController
 
         $form->text('name', __('Name'));
         $form->image('image', __('Image'));
+        $form->textarea('ingredients', __('Ingredients'));
         $form->textarea('cooking', __('Cooking'));
         $form->number('score', __('Score'));
         $form->select('category_id', __('Category Name'))->options(Category::all()->pluck('name', 'id'));
