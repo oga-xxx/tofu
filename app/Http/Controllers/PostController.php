@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 
 
+
 class PostController extends Controller
 {
     public function index() {
@@ -61,6 +62,16 @@ class PostController extends Controller
         
         $post->title = $request->input('title');
         $post->content = $request->input('content');
+        $post->user_id = Auth::user()->id;
+        $img = $request->file('image');
+
+        if (isset($img)) {
+            $path = $img->store('img','public');
+            if ($path) {
+                $post->image = $path;
+            }
+        }
+
         $post->save();
 
         return redirect()->route('posts.show', $post)->with('flash_message', '投稿を編集しました。');

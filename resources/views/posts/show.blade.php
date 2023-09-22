@@ -20,11 +20,11 @@
       <div class="card-body">
         <h5 class="card-title">{{ $post->title }}</h5>
         <p class="card-text">{{ $post->content }}</p>
-        @if ($post->id == $post->user_id)
+        @if (Auth::user()->id == $post->user_id)
         <div class="d-flex">
-          <a href="{{ route('posts.edit', $post) }}" class="btn btn-outline-primary d-block me-1">編集</a>
+          <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-outline-primary d-block me-1">編集</a>
 
-          <form action="{{ route('posts.destroy', $post) }}" method="post">
+          <form action="{{ route('posts.destroy', $post->id) }}" method="post">
             @csrf
             @method('delete')
             <button type="submit" class="btn btn-outline-danger">削除</button>
@@ -33,7 +33,7 @@
         @endif
       </div>
     </div>
-
+        
     <div>
       <hr>
       <h3>コメント</h3>
