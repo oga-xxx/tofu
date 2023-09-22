@@ -10,7 +10,7 @@
         @foreach($posts as $post)
         <div class="card" style="width: 20rem;">
             @if ($post->image !== "")
-            <img src="{{ Storage::url($post->image) }}" alt=“料理の画像” class="card-img-top">
+            <img src="{{ asset("storage/" . $post->image) }}" alt=“料理の画像” class="card-img-top">
             @else
             <img src="{{ asset('img/no_image.png')}}" alt=“料理の画像” class="card-img-top">
             @endif
